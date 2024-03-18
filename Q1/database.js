@@ -1,4 +1,4 @@
-// Import required modules
+
 const { Pool } = require('pg');
 
 // Connects to Postgres
