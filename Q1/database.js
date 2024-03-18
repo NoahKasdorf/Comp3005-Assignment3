@@ -1,6 +1,7 @@
 // Import required modules
 const { Pool } = require('pg');
 
+// Connects to Postgres
 const poolOne = new Pool({
     user: 'postgres',
     host: 'localhost',
@@ -8,6 +9,7 @@ const poolOne = new Pool({
     port: 5432,
 });
 
+// Connects to database in Postgres
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
@@ -18,6 +20,7 @@ const pool = new Pool({
 
 async function createAndIntializeDatabase() {
 
+    // Creates Database
     try{
         await poolOne.query('CREATE DATABASE AssignmentThree');
         console.log("Database Created");
@@ -33,6 +36,7 @@ async function createAndIntializeDatabase() {
       email TEXT NOT NULL UNIQUE,
       enrollment_date DATE)`;
     
+    // Creates table in database
     try{
         await pool.query(table);
         console.log('Table created');
@@ -46,6 +50,7 @@ async function createAndIntializeDatabase() {
     ('Jane', 'Smith', 'jane.smith@example.com', '2023-09-01'),
     ('Jim', 'Beam', 'jim.beam@example.com', '2023-09-02')`;
     
+    // Inserts data into table
     try{
         await pool.query(data);
         console.log('Data inserted');
